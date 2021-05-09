@@ -5,7 +5,7 @@
 
   exits: {
     success: {
-      viewTemplatePath: "pages/articles",
+      viewTemplatePath: "pages/articles/articles",
     },
   },
 

@@ -1,0 +1,18 @@
+<div id="article">
+<div class="container">
+    <h1>Article</h1>
+    <div class="image">
+      <img :src="article[0].coverUrl" alt="">
+    </div>
+    <div class="jumbotron">
+      <h1 class="display-4">{{article[0].title}}</h1>
+      <p class="lead">By: {{article[0].author}}</p>
+    
+      <hr class="my-4">
+      <p>
+        The article was published in {{article[0].journal}} (issue: {{article[0].issueNumber}}) on  {{published}}.
+      </p>
+    </div>  
+  </div>
+</div>
+<%- exposeLocalsToBrowser() %>

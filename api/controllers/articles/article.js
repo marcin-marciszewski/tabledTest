@@ -1,16 +1,11 @@
   module.exports = {
-
-
     friendlyName: 'View single article',
-  
   
     description: 'Display "Single article page.',
   
-  
     exits: {
-  
       success: {
-        viewTemplatePath: 'pages/article'
+        viewTemplatePath: 'pages/articles/article'
       }
   
     },

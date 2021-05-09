@@ -6,7 +6,7 @@
   
     exits: {
       success: {
-        viewTemplatePath: "pages/books",
+        viewTemplatePath: "pages/books/books",
       },
     },
   
