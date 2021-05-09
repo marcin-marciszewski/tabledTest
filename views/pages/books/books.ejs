@@ -1,21 +1,18 @@
 <div id="books">
-  <div class="container">
-<h1>Books</h1>
-
-  <div class="row" v-for="i in Math.ceil(books.length / 3)">
-   <div class="col-sm-4" v-for="book in books.slice((i - 1) * 3, i * 3)">
-    <div class="card">
-      <img class="card-img-top" :src="book.coverUrl" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{book.title}}</h5>
-        <p class="card-text">By: {{book.author}}</p>
-        <a :href="'books/' + book.id" class="btn btn-primary">Go to the book</a>
+<div class="container">
+  <h1>Books</h1>
+    <div class="row" v-for="i in Math.ceil(books.length / 3)">
+    <div class="col-sm-4" v-for="book in books.slice((i - 1) * 3, i * 3)">
+      <div class="card">
+        <img class="card-img-top" :src="book.coverUrl" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.title}}</h5>
+          <p class="card-text">By: {{book.author}}</p>
+          <a :href="'books/' + book.id" class="btn btn-primary">Go to the book</a>
+        </div>
       </div>
+    </div> 
     </div>
-  </div> 
   </div>
 </div>
-</div>
-
-
 <%- exposeLocalsToBrowser() %>
