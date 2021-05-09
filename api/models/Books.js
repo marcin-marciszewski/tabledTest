@@ -9,31 +9,24 @@ module.exports = {
   datastore: 'postgres',
   attributes: {
     title:{ 
-      type:'string',
-      allowNull: true
+      type:'string'
     },
     author:{ 
-      type:'string',
-      allowNull: true
+      type:'string'
     },
     pubilcationDate:{ 
-      type:'number',
-      allowNull: true
+      type:'number'
     },
     coverUrl:{ 
-      type:'string',
-      allowNull: true
+      type:'string'
     },
     publisher:{ 
-      type:'string',
-      allowNull: true
-
+      type:'string'
     },
-    issueNumber:{ 
-      type:'number',
-      allowNull: true
-    },
-
+    comments:{ 
+      collection: 'comments',
+      via: 'bookComment',
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

@@ -10,29 +10,26 @@ module.exports = {
   attributes: {
     title:{ 
       type:'string',
-      allowNull: true
     },
     author:{ 
       type:'string',
-      allowNull: true
     },
     pubilcationDate:{ 
       type:'number',
-      allowNull: true
     },
     coverUrl:{ 
       type:'string',
-      allowNull: true
     },
     journal:{ 
       type:'string',
-      allowNull: true
     },
     issueNumber:{ 
       type:'number',
-      allowNull: true
     },
-    
+    comments:{ 
+      collection: 'comments',
+      via: 'articleComment',
+    }
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

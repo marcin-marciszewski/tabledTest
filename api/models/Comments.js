@@ -10,18 +10,20 @@ module.exports = {
   datastore: 'postgres',
   attributes: {
     content:{ 
-      type:'string',
-      allowNull: true
+      type:'string'
     },
     creator:{ 
-      type:'string',
-      allowNull: true
+      type:'string'
     },
     creationTime:{ 
-      type:'number',
-      allowNull: true
+      type:'number'
     },
-   
+    articleComment:{ 
+      model: 'articles'
+    },
+    bookComment:{ 
+      model: 'books'
+    }
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
