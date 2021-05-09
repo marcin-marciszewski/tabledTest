@@ -1,12 +1,20 @@
-/**
- * BooksController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
 
-module.exports = {
+ module.exports = {
+    friendlyName: "Books",
+
+    description: "Displays books",
   
-
-};
+    exits: {
+      success: {
+        viewTemplatePath: "pages/books",
+      },
+    },
+  
+    fn: async function () {
+      var data = await Books.find({});
+      return {
+        books: data,
+      };
+    },
+  };
 
