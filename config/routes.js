@@ -13,7 +13,7 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'articles/index' },
+  'GET /':                   { action: 'books/index' },
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
   'GET /articles':           { action: 'articles/index' },
   'GET /articles/:id':       { action: 'articles/article' },
