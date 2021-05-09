@@ -11,7 +11,7 @@
     },
   
     fn: async function () {
-      var data = await Books.find({});
+      var data = await Books.find({}).populate('comments');;
       return {
         books: data,
       };

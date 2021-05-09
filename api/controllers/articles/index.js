@@ -10,7 +10,8 @@
   },
 
   fn: async function () {
-    var data = await Articles.find({});
+    const data = await Articles.find({}).populate('comments');
+    
     return {
       articles: data,
     };
