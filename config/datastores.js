@@ -31,7 +31,10 @@ module.exports.datastores = {
   * (For production configuration, see `config/env/production.js`.)          *
   *                                                                          *
   ***************************************************************************/
-
+  postgres: {
+    adapter: 'sails-postgresql',
+    url: 'postgresql://postgres:marian87@localhost:5432/tabled',
+  },
   default: {
 
     /***************************************************************************
