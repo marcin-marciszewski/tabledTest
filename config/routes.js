@@ -18,6 +18,8 @@ module.exports.routes = {
   'GET /articles':           { action: 'articles/index' },
   'GET /articles/:id':       { action: 'articles/article' },
   'GET /books':              { action: 'books/index' },
+  'GET /books/:id':          { action: 'books/book' },
+
 
   
 

@@ -1,8 +1,11 @@
 <div id="articles">
 <h1>Articles</h1>
-
 <div v-for="data in articles">
+  
     {{data.title}}
+    <p v-for="comment in data.comments">
+        {{ comment.content}}
+    </p>
   </div>
 </div>
   <%- exposeLocalsToBrowser() %>
