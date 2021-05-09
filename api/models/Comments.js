@@ -16,7 +16,8 @@ module.exports = {
       type:'string'
     },
     creationTime:{ 
-      type:'number'
+      type:'number',
+      autoCreatedAt: true
     },
     articleComment:{ 
       model: 'articles'
