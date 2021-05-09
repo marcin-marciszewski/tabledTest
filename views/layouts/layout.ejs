@@ -46,7 +46,10 @@
   <body>
     <div purpose="page-wrap">
       <header class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between" purpose="page-header">
-        <a style="cursor: pointer;" class="navbar-brand mr-0" href="/"><img style="height: 20px;" class="logo" alt="NEW_APP_NAME logo" src="/images/logo.png"/></a>
+        <div style="display:flex;">
+        <a style="color: rgba(255, 255, 255, 0.5);" class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/books">Books</a>
+        <a style="color: rgba(255, 255, 255, 0.5);" class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/articles">Articles</a>
+        </div>
         <div class="navbar-nav flex-row">
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
