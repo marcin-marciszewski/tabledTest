@@ -8,7 +8,7 @@
  module.exports = {
     friendlyName: "Articles",
 
-    description: "Displays the Garduino History for the last Month",
+    description: "Displays articles",
   
     exits: {
       success: {
