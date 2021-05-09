@@ -13,10 +13,13 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'view-homepage-or-redirect' },
+  'GET /':                   { action: 'articles/index' },
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
   'GET /articles':           { action: 'articles/index' },
-  'GET /books':           { action: 'books/index' },
+  'GET /articles/:id':       { action: 'articles/article' },
+  'GET /books':              { action: 'books/index' },
+
+  
 
   'GET /faq':                { action:   'view-faq' },
   'GET /legal/terms':        { action:   'legal/view-terms' },
