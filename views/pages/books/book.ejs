@@ -1,7 +1,24 @@
 <div id="book">
-    <h1>Book</h1>
-    
-    
-            {{ book }}
+  <div class="container">
+    <div class="image">
+      <img class="book-image":src="book[0].coverUrl" alt="">
     </div>
-    <%- exposeLocalsToBrowser() %>
+    <div class="jumbotron">
+      <h1 class="display-4">{{book[0].title}}</h1>
+      <p class="lead">By: {{book[0].author}}</p>
+      <hr class="my-4">
+      <p>
+        The book was published by {{book[0].publisher}} on  {{published}}.
+      </p>
+     </div>  
+     <h2>Commnets</h2>
+     <div v-for="comment in book[0].comments"  class="media my-4" >
+        <img class="comment-creator mr-3 " src="https://www.timeshighereducation.com/sites/default/files/default_images/default-avatar_1.png" alt="Generic placeholder image">
+        <div class="media-body">
+        <h5 class="mt-0">Commented by: {{comment.creator}} on {{commentCreated}}</h5>
+          {{comment.content}}
+        </div>
+     </div>
+  </div>
+</div>
+<%- exposeLocalsToBrowser() %>
