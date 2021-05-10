@@ -1,18 +1,24 @@
 <div id="article">
-<div class="container">
-    <h1>Article</h1>
+  <div class="container">
     <div class="image">
-      <img :src="article[0].coverUrl" alt="">
+      <img class="article-image":src="article[0].coverUrl" alt="">
     </div>
     <div class="jumbotron">
       <h1 class="display-4">{{article[0].title}}</h1>
       <p class="lead">By: {{article[0].author}}</p>
-    
       <hr class="my-4">
       <p>
         The article was published in {{article[0].journal}} (issue: {{article[0].issueNumber}}) on  {{published}}.
       </p>
     </div>  
+    <h2>Commnets</h2>
+      <div v-for="comment in article[0].comments"  class="media my-4" >
+        <img class="comment-creator mr-3 " src="https://www.timeshighereducation.com/sites/default/files/default_images/default-avatar_1.png" alt="Generic placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Commented by: {{comment.creator}} on {{commentCreated}}</h5>
+            {{comment.content}}
+        </div>
+      </div>
   </div>
 </div>
 <%- exposeLocalsToBrowser() %>
