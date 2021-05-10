@@ -1,0 +1,485 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.6 (Ubuntu 12.6-1.pgdg20.04+1)
+-- Dumped by pg_dump version 12.6 (Ubuntu 12.6-1.pgdg20.04+1)
+
+-- Started on 2021-05-10 08:33:45 BST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 209 (class 1259 OID 37675)
+-- Name: archive; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.archive (
+    id integer NOT NULL,
+    "createdAt" bigint,
+    "fromModel" text,
+    "originalRecord" json,
+    "originalRecordId" json
+);
+
+
+ALTER TABLE public.archive OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 37673)
+-- Name: archive_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.archive_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.archive_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3017 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: archive_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.archive_id_seq OWNED BY public.archive.id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 37685)
+-- Name: articles; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.articles (
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id integer NOT NULL,
+    title text,
+    author text,
+    "pubilcationDate" real,
+    "coverUrl" text,
+    journal text,
+    "issueNumber" real
+);
+
+
+ALTER TABLE public.articles OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 37682)
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.articles_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.articles_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3018 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
+
+
+--
+-- TOC entry 207 (class 1259 OID 37659)
+-- Name: books; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.books (
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id integer NOT NULL,
+    title text,
+    author text,
+    "pubilcationDate" real,
+    "coverUrl" text,
+    publisher text
+);
+
+
+ALTER TABLE public.books OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 37656)
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.books_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.books_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3019 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.books_id_seq OWNED BY public.books.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 37640)
+-- Name: comments; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.comments (
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id integer NOT NULL,
+    content text,
+    creator text,
+    "creationTime" bigint,
+    "articleComment" integer,
+    "bookComment" integer
+);
+
+
+ALTER TABLE public.comments OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 37638)
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3020 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 37649)
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."user" (
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id integer NOT NULL,
+    "emailAddress" text,
+    "emailStatus" text,
+    "emailChangeCandidate" text,
+    password text,
+    "fullName" text,
+    "isSuperAdmin" boolean,
+    "passwordResetToken" text,
+    "passwordResetTokenExpiresAt" real,
+    "emailProofToken" text,
+    "emailProofTokenExpiresAt" real,
+    "stripeCustomerId" text,
+    "hasBillingCard" boolean,
+    "billingCardBrand" text,
+    "billingCardLast4" text,
+    "billingCardExpMonth" text,
+    "billingCardExpYear" text,
+    "tosAcceptedByIp" text,
+    "lastSeenAt" real
+);
+
+
+ALTER TABLE public."user" OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 37647)
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3021 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
+
+
+--
+-- TOC entry 2862 (class 2604 OID 37678)
+-- Name: archive id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.archive ALTER COLUMN id SET DEFAULT nextval('public.archive_id_seq'::regclass);
+
+
+--
+-- TOC entry 2863 (class 2604 OID 37689)
+-- Name: articles id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.articles ALTER COLUMN id SET DEFAULT nextval('public.articles_id_seq'::regclass);
+
+
+--
+-- TOC entry 2861 (class 2604 OID 37663)
+-- Name: books id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.books ALTER COLUMN id SET DEFAULT nextval('public.books_id_seq'::regclass);
+
+
+--
+-- TOC entry 2859 (class 2604 OID 37643)
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- TOC entry 2860 (class 2604 OID 37654)
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
+
+
+--
+-- TOC entry 3009 (class 0 OID 37675)
+-- Dependencies: 209
+-- Data for Name: archive; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3011 (class 0 OID 37685)
+-- Dependencies: 211
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620562702, 1620562702, 1, 'How the Pandemic Will End
+', 'Ed Yong', 1.5851366e+09, 'https://cdn.theatlantic.com/thumbor/E9sR0jn3Sjx24NMy3UaV_J9q35w=/1920x1080/media/img/2020/03/25/coronaPrepFinal/original.jpg', 'The Atantic', 32020);
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620562870, 1620562870, 2, 'You’re Showering Too Much', 'JAMES HAMBLIN', 1.5919622e+09, 'https://cdn.theatlantic.com/thumbor/hkVAXRsRtluweaX5ZF10yl9RYjI=/672x816/media/img/posts/2020/06/DIS_Hamblin_Overwashing/original.jpg', 'The Atantic', 62020);
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620563909, 1620563909, 3, 'The Conscience of Silicon Valley
+', ' ZACH BARON', 1.5881606e+09, 'https://media.gq.com/photos/5f3c113a8f9d96b932abce1c/16:9/w_2560%2Cc_limit/jaron-lanier-gq-september-2020-01.jpg', 'GQ', 42021);
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620564336, 1620564336, 4, 'It Does Not Matter If You Are Good
+', ' R. ERIC THOMAS', 1.5911846e+09, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/ericpiece2-1591040399.png?resize=980:*', 'ELLE', 52020);
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620564475, 1620564475, 5, 'The Unraveling of America  
+', 'Wade Davis', 1.5980966e+09, 'https://www.rollingstone.com/wp-content/uploads/2020/08/tattered-flag-nyc-skyline.jpg?resize=1800,1200&w=1200', 'Rolling Stone', 82020);
+INSERT INTO public.articles ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", journal, "issueNumber") VALUES (1620564629, 1620564629, 6, 'Un-Adopted', 'Caitlin Moscatello', 1.597751e+09, 'https://pyxis.nymag.com/v1/imgs/fc5/606/1afea3572bee741a82a782598552da5e8c-mommy-blogger-new-white.rhorizontal.w1100.jpg', 'The Cut
+', 82020);
+
+
+--
+-- TOC entry 3007 (class 0 OID 37659)
+-- Dependencies: 207
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620561744, 1620561744, 1, 'The Midnight Library', 'Matt Haig ', 1.6136486e+09, 'https://images-na.ssl-images-amazon.com/images/I/41zZ5Eg8EzL._SX322_BO1,204,203,200_.jpg', 'Canongate Books');
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620561827, 1620561827, 2, 'The Slimming Foodie', 'Pip Payne', 1.6188326e+09, 'https://images-na.ssl-images-amazon.com/images/I/51jiKxqYR6L._SX405_BO1,204,203,200_.jpg', 'Aster');
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620562020, 1620562020, 3, 'The Boy, The Mole, The Fox and The Horse', 'Charlie Mackesy', 1.5707078e+09, 'https://images-na.ssl-images-amazon.com/images/I/4138h5XntrL._SX389_BO1,204,203,200_.jpg', 'Ebury Press');
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620562133, 1620562133, 4, 'Pinch of Nom Comfort Food: 100 Slimming, Satisfying Meals', 'Kay Featherstone', 1.6390502e+09, 'https://images-na.ssl-images-amazon.com/images/I/41F9CR0H5BS._SX382_BO1,204,203,200_.jpg', 'Bluebird');
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620562246, 1620562246, 5, 'Where the Crawdads Sing', 'Delia Owens ', 1.576151e+09, 'https://images-na.ssl-images-amazon.com/images/I/518ljr0qusL._SX316_BO1,204,203,200_.jpg', 'Corsair');
+INSERT INTO public.books ("createdAt", "updatedAt", id, title, author, "pubilcationDate", "coverUrl", publisher) VALUES (1620562350, 1620562350, 6, 'Shuggie Bain', 'Douglas Stuart ', 1.618487e+09, 'https://images-na.ssl-images-amazon.com/images/I/41TT2cPLKtS._SX327_BO1,204,203,200_.jpg', 'Picador');
+
+
+--
+-- TOC entry 3003 (class 0 OID 37640)
+-- Dependencies: 203
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565136, 1620565136, 1, 'Some people come into our lives and leave footprints on our hearts, while others come into our lives and make us wanna leave footprints on their face.', 'caty', 1620565100, 1, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565150, 1620565150, 2, 'Microsoft bought Skype for 8,5 billion!.. what a bunch of idiots! I downloaded it for free!', 'adsf', 1620565100, 1, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565157, 1620565157, 3, 'I am ready to meet my Maker. Whether my Maker is prepared for the great ordeal of meeting me is another matter.', 'asdf', 1620565100, 2, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565157, 1620565157, 4, 'Thank you Facebook, I can now farm without going outside, cook without being in my kitchen, feed fish I don''t have & waste an entire day without having a life.', 'fgsdg', 1620565100, 2, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565177, 1620565177, 5, 'Suicide would be my way of telling God that I quit.', 'fgdsg', 1620565100, 3, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565189, 1620565189, 6, 'I am ready to meet my Maker. Whether my Maker is prepared for the great ordeal of meeting me is another matter.', 'bxcb', 1620565200, 3, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565199, 1620565199, 7, 'Life is full of temporary situations, ultimately ending in a permanent solution.', 'dfh', 1620565200, 4, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565209, 1620565209, 8, 'Girls have an unfair advantage over men: If they can''t get what they want by being smart, they can get it by being dumb.', 'dftg', 1620565200, 4, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565218, 1620565218, 9, 'Girls have an unfair advantage over men: If they can''t get what they want by being smart, they can get it by being dumb.', 'sdfgh', 1620565200, 5, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565218, 1620565218, 10, 'I am ready to meet my Maker. Whether my Maker is prepared for the great ordeal of meeting me is another matter.', 'hsf', 1620565200, 5, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565232, 1620565232, 11, 'Why go to college? There''s Google.', 'shfdfr', 1620565200, 6, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565239, 1620565239, 12, 'Life is full of temporary situations, ultimately ending in a permanent solution.', 'fsgh', 1620565200, 6, NULL);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565247, 1620565247, 13, 'Life is full of temporary situations, ultimately ending in a permanent solution.', 'sdfgsdfg', 1620565200, NULL, 1);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565247, 1620565247, 14, 'Suicide would be my way of telling God that I quit.', 'sdfhgsjh', 1620565200, NULL, 1);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565247, 1620565247, 15, 'I am ready to meet my Maker. Whether my Maker is prepared for the great ordeal of meeting me is another matter.', 'sgjhsh', 1620565200, NULL, 2);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565247, 1620565247, 16, 'Suicide would be my way of telling God that I quit.', 'sdfghsfgjh', 1620565200, NULL, 2);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565274, 1620565274, 17, 'Suicide would be my way of telling God that I quit.', 'sdfyte', 1620565200, NULL, 3);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565284, 1620565284, 18, 'Microsoft bought Skype for 8,5 billion!.. what a bunch of idiots! I downloaded it for free!', 'treyret', 1620565200, NULL, 3);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565290, 1620565290, 19, 'Life is full of temporary situations, ultimately ending in a permanent solution.', 'ertertg', 1620565200, NULL, 4);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565290, 1620565290, 20, 'Why go to college? There''s Google.', 'sfrgdfg', 1620565200, NULL, 4);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565304, 1620565304, 21, 'I saw six men kicking and punching the mother-in-law. My neighbor said “Are you going to help?” I said, “No, Six should be enough.”', 'sdfgsdg', 1620565200, NULL, 5);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565304, 1620565304, 22, 'A good lawyer knows the law; a clever one takes the judge to lunch.', 'sfdgsdfg', 1620565200, NULL, 5);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565319, 1620565319, 23, 'I saw six men kicking and punching the mother-in-law. My neighbor said “Are you going to help?” I said, “No, Six should be enough.”', 'sdfgad', 1620565400, NULL, 6);
+INSERT INTO public.comments ("createdAt", "updatedAt", id, content, creator, "creationTime", "articleComment", "bookComment") VALUES (1620565324, 1620565324, 24, 'I''m always relieved when someone is delivering a eulogy and I realise I''m listening to it.', 'sdfgsdafg', 1620565400, NULL, 6);
+
+
+--
+-- TOC entry 3005 (class 0 OID 37649)
+-- Dependencies: 205
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."user" ("createdAt", "updatedAt", id, "emailAddress", "emailStatus", "emailChangeCandidate", password, "fullName", "isSuperAdmin", "passwordResetToken", "passwordResetTokenExpiresAt", "emailProofToken", "emailProofTokenExpiresAt", "stripeCustomerId", "hasBillingCard", "billingCardBrand", "billingCardLast4", "billingCardExpMonth", "billingCardExpYear", "tosAcceptedByIp", "lastSeenAt") VALUES (1620487147054, 1620487147054, 1, 'admin@example.com', 'confirmed', '', '$2a$10$VEssehIbRYDATipLTJhJG.ti7fkysEyiPCqmQuADn7UHOJiUt1rjO', 'Ryan Dahl', true, '', 0, '', 0, '', false, '', '', '', '', '', 0);
+INSERT INTO public."user" ("createdAt", "updatedAt", id, "emailAddress", "emailStatus", "emailChangeCandidate", password, "fullName", "isSuperAdmin", "passwordResetToken", "passwordResetTokenExpiresAt", "emailProofToken", "emailProofTokenExpiresAt", "stripeCustomerId", "hasBillingCard", "billingCardBrand", "billingCardLast4", "billingCardExpMonth", "billingCardExpYear", "tosAcceptedByIp", "lastSeenAt") VALUES (1620487796902, 1620628899592, 2, 'szantilas@gmail.com', 'confirmed', '', '$2a$10$eafxvFOCNRG4dEr0AsLqFeM.gVTqLOLR/uM/7.ybw4te/RgIbVxgC', 'Jan Kowalski', false, '', 0, '', 0, '', false, '', '', '', '', '::1', 1.6206289e+12);
+INSERT INTO public."user" ("createdAt", "updatedAt", id, "emailAddress", "emailStatus", "emailChangeCandidate", password, "fullName", "isSuperAdmin", "passwordResetToken", "passwordResetTokenExpiresAt", "emailProofToken", "emailProofTokenExpiresAt", "stripeCustomerId", "hasBillingCard", "billingCardBrand", "billingCardLast4", "billingCardExpMonth", "billingCardExpYear", "tosAcceptedByIp", "lastSeenAt") VALUES (1620630213514, 1620630213575, 4, 'szanftilas@gmail.com', 'confirmed', '', '$2a$10$tyxsR/OiAXkPQRRy7Odtte7QjLOq4/wAXg2Vqa94f15HU7P4t4oee', 'MR MARCIN MARCISZEWSKI', false, '', 0, '', 0, '', false, '', '', '', '', '::1', 1.6206302e+12);
+INSERT INTO public."user" ("createdAt", "updatedAt", id, "emailAddress", "emailStatus", "emailChangeCandidate", password, "fullName", "isSuperAdmin", "passwordResetToken", "passwordResetTokenExpiresAt", "emailProofToken", "emailProofTokenExpiresAt", "stripeCustomerId", "hasBillingCard", "billingCardBrand", "billingCardLast4", "billingCardExpMonth", "billingCardExpYear", "tosAcceptedByIp", "lastSeenAt") VALUES (1620631429591, 1620631429660, 5, 'szantilas@gmail.comd', 'confirmed', '', '$2a$10$e8bG2YXojOinYGCd6KAeYe6tacxG1xFz5RW8YDZNuuS0f2L/8TFSa', 'MR MARCIN MARCISZEWSKI', false, '', 0, '', 0, '', false, '', '', '', '', '::1', 1.6206315e+12);
+
+
+--
+-- TOC entry 3022 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: archive_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.archive_id_seq', 1, false);
+
+
+--
+-- TOC entry 3023 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.articles_id_seq', 6, true);
+
+
+--
+-- TOC entry 3024 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.books_id_seq', 6, true);
+
+
+--
+-- TOC entry 3025 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 24, true);
+
+
+--
+-- TOC entry 3026 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 5, true);
+
+
+--
+-- TOC entry 2873 (class 2606 OID 37686)
+-- Name: archive archive_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.archive
+    ADD CONSTRAINT archive_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2875 (class 2606 OID 37694)
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2871 (class 2606 OID 37670)
+-- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2865 (class 2606 OID 37653)
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2867 (class 2606 OID 37672)
+-- Name: user user_emailAddress_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT "user_emailAddress_key" UNIQUE ("emailAddress");
+
+
+--
+-- TOC entry 2869 (class 2606 OID 37668)
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2021-05-10 08:33:46 BST
+
+--
+-- PostgreSQL database dump complete
+--
+
